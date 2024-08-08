@@ -1,7 +1,19 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+# the Sign up function for new users
 
+class LoginForm (AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs= {
+        'placeholder': 'Enter your name...',
+        'class': 'w-full px-6 py-4 rounded-xl'             
+    }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs= {
+        'placeholder': 'Enter your password...',
+        'class': 'w-full px-6 py-4 rounded-xl'             
+    }))
+    
+    
 class SignupForm (UserCreationForm):
     class Meta:
         model = User
